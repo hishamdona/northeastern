@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-white: #FCFAF6;
+  --color-brand-linen: #F1ECE4;
+  --color-brand-sage: #8F9E8B;
+  --color-brand-sage-light: #AAB7A7;
+  --color-brand-sage-dark: #6C7A69;
+  --color-brand-tuscan: #E28525;
+  --color-brand-tuscan-light: #F3A248;
+  --color-brand-tuscan-dark: #B96614;
+  --color-brand-brown: #3D2314;
+  --color-brand-brown-light: #5A3925;
+  --color-brand-brown-dark: #24130A;
+  --color-brand-charcoal: #1C1917;
+  
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FCFAF6;
+  --foreground: #1C1917;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-outfit), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Embroidery Stitch Line Effect */
+.border-stitch {
+  position: relative;
+}
+.border-stitch::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #E28525 50%, transparent 50%);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+}
+
+.border-stitch-vertical {
+  position: relative;
+}
+.border-stitch-vertical::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2px;
+  background-image: linear-gradient(to bottom, #E28525 50%, transparent 50%);
+  background-size: 2px 8px;
+  background-repeat: repeat-y;
+}
+
+/* Glassmorphism styling */
+.glass-panel {
+  background: rgba(252, 250, 246, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(230, 223, 211, 0.4);
+}
+
+.glass-panel-dark {
+  background: rgba(28, 25, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(61, 35, 20, 0.2);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FCFAF6;
+}
+::-webkit-scrollbar-thumb {
+  background: #8F9E8B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6C7A69;
 }
